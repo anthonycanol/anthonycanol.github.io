@@ -1,130 +1,54 @@
-@import url("https://fonts.googleapis.com/css?family=Assistant:400,700|Playfair+Display:900");
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-:root {
-  --clr-light: #fdffc4;
-  --clr-dark: #00332a;
-  --clr-primary: #dbffa2;
-  --clr-secondary: #c3fcf2;
-  --clr-accent: #ff7750;
+html, body, div, p, ul, ol, li { padding: 0; margin: 0; }
+h1, h2, h3, h4, h5, h6 { padding: 0; margin: 0; line-height: 1; }
 
-  --foreground: var(--clr-dark);
-  --background: var(--clr-light);
+img { display: block; }
 
-  --ff-title: "Playfair Display", serif;
-  --ff-body: "Assistant", sans-serif;
-}
+a, a:hover { text-decoration: none; color: inherit; transition: all .3s ease-in-out; }
 
-.darkmode {
-  --clr-light: #fdffc4;
-  --clr-dark: #00332a;
-  --clr-primary: #202302;
-  --clr-secondary: #00100d;
-  --clr-accent: #ff7750;
+html { font-size:62.5%; overflow-x: hidden; }
 
-  --foreground: var(--clr-light);
-  --background: var(--clr-dark);
-}
+body { font-size: 16px; font-size: 1.6rem; font-family: 'Montserrat', sans-serif; line-height: 1.2; position: relative;  }
 
+.dflex { display: flex; }
+.fdir-c { flex-direction: column; }
+.f-wrap { flex-wrap: nowrap; }
+.jc-sb { justify-content: space-between; }
+.jc-fe { justify-content: flex-end; }
+.jc-c { justify-content: center; }
+.ai-c { align-items: center; }
+.ai-fe { align-items: flex-end; }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--ff-body);
-  font-size:62.5%;
-  line-height: 1.6;
-}
+.row { width: 100%; max-width: 1320px; padding-left: 10px; padding-right: 10px; margin: 0 auto; }
 
-h1 {
-  font-size: calc(3rem + 7vw);
-  font-family: var(--ff-title);
-  margin: 0 0 0.25em;
-  line-height: 1;
-}
+header { position: relative; }
+.header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(0,0,0,.7); color: #fff; z-index: 999; transition: all 1s ease-in-out; display: none; }
+.header.show { display: block; transition: all 1s ease-in-out; }
+.header .row { padding-top: 15px; padding-bottom: 20px; }
+.header .left, .header .right { flex: 1 1 0; width: 100%; max-width: 100%; }
+.header .left { max-width: 300px; }
+.header .right { margin-left:  5px; max-width: 700px; }
+.header .label { font-size:  20px; font-weight: 300; text-transform: uppercase; letter-spacing: 8.5px; text-align: center; }
+.header ul { list-style-type: none; }
+.header ul a { position: relative; text-transform: uppercase; letter-spacing: 1px; display: block; }
+.header ul a:after { content: ''; display: block; position: absolute; bottom: 0; right: 0; width: 0; height: 1px; transition: all .3s ease-in-out; background: #fff; }
+.header ul a:hover:after { width: 100%; transition: all .3s ease-in-out; }
 
-.subtitle {
-  max-width: 600px;
-}
-
-.btn-group {
-  margin: 2em 0;
-  display: relative;
-}
-
-.btn {
-  padding: 1em 2em;
-  text-decoration: none;
-  text-transform: uppercase;
-  border-radius: 5px;
-  position: relative;
-  display: inline-block;
-  line-height: 1;
-}
-
-.btn + .btn {
-  margin-left: 1em;
-}
-
-.btn-secondary {
-  background: var(--foreground);
-  color: var(--background);
-  // border: currentColor solid 2px;
-}
-
-.btn-accent {
-  background: var(--clr-accent);
-  color: var(--foreground);
-}
-
-.btn::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: var(--foreground) 2px solid;
-  left: -4px;
-  top: 4px;
-  border-radius: inherit;
-  z-index: -1;
-}
-
-.intro {
-  height: 80vh;
-  padding: 10em 0;
-  display: grid;
-  grid-template-columns: minmax(2em, 1fr) minmax(80vw, 860px) minmax(2em, 1fr);
-  background: linear-gradient(120deg, var(--clr-primary), var(--clr-secondary));
-  align-content: center;
-}
-
-.intro > * {
-  grid-column: 2 / 3;
-}
-
-.dark-mode-toggle {
-  position: absolute;
-  z-index: 100;
-  top: 1em;
-  right: 1em;
-  color: var(--foreground);
-  border: 2px solid currentColor;
-  padding: 4px;
-  background: transparent;
-  cursor: pointer;
-  border-radius: 5px;
-  width: 30px;
-  height: 30px;
-}
-
-.click-here {
-  // SVG icon from Font Awesome
-  width: 100px;
-  right: 1.5em;
-  position: absolute;
-  top: 3em;
+.banner { height: 100vh; width: 100vw; }
+.banner .wrap { height: 100%; width: 100%; padding: 10px; }
+.banner h1 { font-size: clamp(3.2rem, -2.2412rem + 7.076vw, 10rem); margin-bottom: 4rem; font-weight: 300; letter-spacing: .87px; text-align: center; }
+.banner h2 { font-size: clamp(3.0rem, 0.0039rem + 3.1217vw, 6rem); font-weight: 300; text-align: center; }
+.banner .cursor { background-color: #000; display: inline-block; margin-left: 0.1rem; width: 2px; animation: blink 1s infinite; }
+.banner .cursor.typing { animation: none; }
+@keyframes blink {
+  0%  { background-color: #000; }
+  49% { background-color: #000; }
+  50% { background-color: transparent; }
+  99% { background-color: transparent; }
+  100%  { background-color: #000; }
 }
