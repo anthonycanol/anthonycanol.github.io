@@ -14,16 +14,14 @@
 	  "method": "GET"
 	}
 
-	let saying = $.ajax(settings).done(function (response) {
-	  const data = JSON.parse(response);
-	  let random = data[Math.floor(Math.random() * data.length)];
-	  return random;
-	});
+	let saying = $.ajax(settings)
 
 	const typedTextSpan = document.querySelector(".typed-text");
 	const cursorSpan = document.querySelector(".cursor");
+	const authorSpan = document.querySelector(".said");
 
-	const textArray = ["Find something interesting."];
+	let textArray = "Find something interesting.";
+	let author = "";
 	const typingDelay = 200;
 	const erasingDelay = 100;
 	const newTextDelay = 2000; // Delay between current and next text
@@ -32,13 +30,14 @@
 
 	function typeWriter(){
 
-		if (charIndex < textArray[textArrayIndex].length) {
+		if (charIndex < textArray.length) {
 		    if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-		    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+		    typedTextSpan.textContent += textArray.charAt(charIndex);
 		    charIndex++;
 		    setTimeout(typeWriter, typingDelay);
 		} 
 		else {
+			authorSpan.textContent = author
 		    cursorSpan.classList.remove("typing");
 		  	setTimeout(erase, newTextDelay);
 		}
@@ -46,15 +45,25 @@
 
 	function erase() {
 	  if (charIndex > 0) {
+	  	authorSpan.textContent = ''
 	    if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-	    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+	    typedTextSpan.textContent = textArray.substring(0, charIndex-1);
 	    charIndex--;
 	    setTimeout(erase, erasingDelay);
 	  } 
 	  else {
 	    cursorSpan.classList.remove("typing");
-	    textArrayIndex++;
-	    if(textArrayIndex>=textArray.length) textArrayIndex=0;
+
+	    saying.then((message) => {
+			const data = JSON.parse(message);
+			let random = data[Math.floor(Math.random() * data.length)];
+			textArray = random.text;
+			author = '- '+random.author
+			console.log(random);
+		}).catch((message) => {
+			console.log('catch '+message);
+		}) 
+
 	    setTimeout(typeWriter, typingDelay + 1100);
 	  }
 	}
@@ -69,6 +78,16 @@
 	    }
 	}
 
+	let p = new Promise((resolve,reject) => {
+		let a = 1+1
+		if(a == 2){
+			resolve('success')
+		}else{
+			reject('failed')
+		}
+	})
+
+
 	// Check if DOM is ready.
 	$(function() {
 		console.log('Ready');
@@ -81,6 +100,7 @@
 		$(".typed-text").empty();
 
 		setTimeout(typeWriter, newTextDelay + 250);
+
 	});
 
 } )( jQuery );

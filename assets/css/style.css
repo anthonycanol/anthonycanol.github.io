@@ -45,6 +45,7 @@ header { position: relative; }
 .banner h2 { font-size: clamp(3.0rem, 0.0039rem + 3.1217vw, 6rem); font-weight: 300; text-align: center; }
 .banner .cursor { background-color: #000; display: inline-block; margin-left: 0.1rem; width: 2px; animation: blink 1s infinite; }
 .banner .cursor.typing { animation: none; }
+.banner .said { width: 100%; text-align: right; text-transform: uppercase; margin-top: 3rem; transition: all .3s ease-in-out; }
 @keyframes blink {
   0%  { background-color: #000; }
   49% { background-color: #000; }
