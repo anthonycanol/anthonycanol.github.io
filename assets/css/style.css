@@ -26,7 +26,7 @@ body { font-size: 16px; font-size: 1.6rem; font-family: 'Montserrat', sans-serif
 .ai-c { align-items: center; }
 .ai-fe { align-items: flex-end; }
 
-.p-15 { paddig: 15px; }
+.p-15 { padding: 15px; }
 
 .row { width: 100%; max-width: 1320px; padding-left: 10px; padding-right: 10px; margin: 0 auto; }
 
@@ -48,23 +48,25 @@ header { position: relative; }
 	height: 100vh;
 }
 
-.content-area {
-	position: relative;
-z-index: 1; }
+.content-area {position: relative; z-index: 1; padding: 15px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    height: 100%; }
 
-.banner { height: 100vh; width: 100vw; }
+.banner { background: rgba(0,0,139,.4); }
 .banner .wrap { height: 100%; width: 100%; padding: 10px; }
 .banner h1 { font-size: clamp(3.2rem, -2.2412rem + 7.076vw, 10rem); margin-bottom: 4rem; font-weight: 300; letter-spacing: .87px; text-align: center; }
-.banner h2 { font-size: clamp(3.0rem, 0.0039rem + 3.1217vw, 6rem); font-weight: 300; text-align: center; }
-.banner .cursor { background-color: #000; display: inline-block; margin-left: 0.1rem; width: 2px; animation: blink 1s infinite; }
+.banner h2 { font-size: clamp(3.0rem, 0.0039rem + 3.1217vw, 6rem); font-weight: 300; text-align: center; color: #fff; }
+.banner .cursor { background-color: #fff; display: inline-block; margin-left: 0.1rem; width: 2px; animation: blink 1s infinite; }
 .banner .cursor.typing { animation: none; }
-.banner .said { width: 100%; text-align: right; text-transform: uppercase; margin-top: 3rem; transition: all .3s ease-in-out; }
+.banner .said { width: 100%; text-align: right; text-transform: uppercase; margin-top: 3rem; transition: all .3s ease-in-out; color: #fff; }
 @keyframes blink {
-  0%  { background-color: #000; }
-  49% { background-color: #000; }
+  0%  { background-color: #fff; }
+  49% { background-color: #fff; }
   50% { background-color: transparent; }
   99% { background-color: transparent; }
-  100%  { background-color: #000; }
+  100%  { background-color: #fff; }
 }
 
 .main .fog {
