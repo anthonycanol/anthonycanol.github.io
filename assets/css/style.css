@@ -26,6 +26,8 @@ body { font-size: 16px; font-size: 1.6rem; font-family: 'Montserrat', sans-serif
 .ai-c { align-items: center; }
 .ai-fe { align-items: flex-end; }
 
+.p-15 { paddig: 15px; }
+
 .row { width: 100%; max-width: 1320px; padding-left: 10px; padding-right: 10px; margin: 0 auto; }
 
 header { position: relative; }
