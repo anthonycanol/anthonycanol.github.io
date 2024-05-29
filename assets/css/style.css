@@ -54,7 +54,7 @@ header { position: relative; }
     justify-content: center;
     height: 100%; }
 
-.banner { background: rgba(0,0,139,.4); }
+.banner { background: rgba(0,0,139,.4); width: 100%; }
 .banner .wrap { height: 100%; width: 100%; padding: 10px; }
 .banner h1 { font-size: clamp(3.2rem, -2.2412rem + 7.076vw, 10rem); margin-bottom: 4rem; font-weight: 300; letter-spacing: .87px; text-align: center; }
 .banner h2 { font-size: clamp(3.0rem, 0.0039rem + 3.1217vw, 6rem); font-weight: 300; text-align: center; color: #fff; }
